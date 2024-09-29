@@ -1,0 +1,422 @@
+<template>
+    <div class="container">
+        <div class="searchInfo display_flex between padding_20">
+            <div class="display_flex flex_center w-80">
+                <view-form :list="list" @getForm="getInfo" :model="form" :labelWidth="'100px'" class="w-100"></view-form>
+                <el-button type="primary" icon="el-icon-search" plain @click="search()" class="m-b-30" :loading="load_mode">搜索</el-button>
+            </div>
+            <div class="m-b-30">
+                <el-button-group>
+                    <el-button
+                        type="primary"
+                        plain
+                        icon="el-icon-download"
+                        @click="exportData('/manage/united/borrowingStatistics/borrowingStatisticsExcel')"
+                        >导出</el-button
+                    >
+                    <el-button type="primary" plain icon="el-icon-printer" @click="print('cir')">打印</el-button>
+                </el-button-group>
+            </div>
+        </div>
+
+        <div :style="$height(210)" class="over">
+            <div class="padding_20 m-b-20" id="cir">
+                <el-table :data="tableData" stripe :summary-method="getSummaries" show-summary style="width: 100%">
+                    <el-table-column type="index" width="50"> </el-table-column>
+                    <el-table-column prop="name" label="单位名称"> </el-table-column>
+                    <el-table-column prop="readerNumber" label="在校读者(有效)"> </el-table-column>
+                    <el-table-column prop="totalBorrowingNumber" label="总借阅量"> </el-table-column>
+                    <el-table-column prop="bookBaseNumber" label="借阅种数"> </el-table-column>
+                    <el-table-column prop="bookNumber" label="借阅册数"> </el-table-column>
+                    <el-table-column prop="avage" label="借阅率"> </el-table-column>
+                    <el-table-column prop="readerBorrowingNumber" label="人均借阅"> </el-table-column>
+                </el-table>
+            </div>
+
+            <div class="f-s-12 color_d">
+                说明：国家标准来源于教基司函〔2018〕51 号文件：教育部关于征求《中小学图书馆（室）规程》意见的通知
+            </div>
+            <div class="padding_20 display_flex between">
+                <div></div>
+                <el-button type="primary" plain @click="closeEchart" class="m-b-30">{{ show ? '隐藏图表' : '显示图表' }}</el-button>
+            </div>
+
+            <div class="">
+                <div id="chart1" :style="{ width: '100%', height: '400px' }" v-show="show"></div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import viewForm from '../../../view/form';
+
+export default {
+    components: {
+        viewForm
+    },
+    data() {
+        return {
+            bus: this.bus(this),
+            form: {},
+            show: true,
+            load_mode: false,
+            tableData: [],
+            list: [
+                //    {name:'单位类型',id:'platformLabel',type:'select',options:[]},
+
+                { name: '单位名称', id: 'platformId', relation: 'name', type: 'select', options: [] },
+
+                // {name:'达标情况',id:'standard',type:'select',options:[
+                //      {name:'是',id:true},
+                //      {name:'否',id:false}
+                // ]},
+
+                { name: '日期', id: 'borrowStartDate', end: 'borrowEndDate', type: 'aroundTimes', options: [] }
+            ]
+        };
+    },
+    created() {
+        this.getList();
+    },
+    methods: {
+        // 获取单位列表
+        getList() {
+            this.ax.get('/manage/united/unitedGenral/platform').then((res) => {
+                this.list[0].options = res.content;
+            });
+        },
+
+        // search参数
+        getInfo(val) {
+            // console.log(val)
+            this.form = val;
+        },
+        // 检索
+        search() {
+            this.load_mode = true;
+            this.form.page = 0;
+            this.form.size = 999;
+            this.ax
+                .get('/manage/united/borrowingStatistics/borrowingStatistics', { params: this.form })
+                .then((res) => {
+                    this.load_mode = false;
+                    // console.log(res)
+                    this.tableData = res.content.map((it) => {
+                        // console.log(it)
+                        if (it.totalBorrowingNumber > 0 && it.totalBookNumber > 0) {
+                            it.avage = ((it.totalBorrowingNumber / it.totalBookNumber) * 100).toFixed(2) + '%';
+                        } else {
+                            it.avage = '0.00%';
+                        }
+
+                        return it;
+                    });
+
+                    let arr = [];
+                    arr = res.content.map((it) => {
+                        return it.name;
+                    });
+                    let series = [[], [], [], [], []];
+                    res.content.map((it) => {
+                        series[0].push(it.readerNumber);
+                        series[1].push(it.totalBorrowingNumber);
+                        series[2].push(it.bookBaseNumber);
+                        series[3].push(it.bookNumber);
+                        series[4].push(it.readerBorrowingNumber);
+                    });
+                    //  return [it.countryAverageBookCollection,it.bookNumber,it.averageBookCollection,it.supplementNumber]
+                    // console.log(series)
+                    this.drawLine('chart1', arr, series, ['#2699FB', '#FFAE71', '#5BD1A5', '#FB8180', '#E6C4B9']);
+                })
+                // {
+                //     name: 'Forest',
+                //     type: 'bar',
+                //     barGap: 0,
+                //     label: labelOption,
+                //     data: [320, 332, 301, 334, 390]
+                // },
+                .catch((res) => {
+                    this.load_mode = false;
+                });
+        },
+        closeEchart() {
+            this.show = !this.show;
+        },
+        exportData(url) {
+            this.ax.get(url, { params: this.form }).then((res) => {
+                let name = res.split('/')[1]
+                this.FileSaver.saveAs(res, name);
+            });
+        },
+      getSummaries(param){
+          const { columns, data } = param;
+          const sums = [];
+          columns.forEach((column, index) => {
+            console.log(column)
+            if (index === 0) {
+              sums[index] = '合计';
+              return;
+            }else if(index === 1){
+              sums[index] = '';
+              return;
+            }else if(index === 2){
+              const values = data.map(item => Number(item[column.property]));
+              sums[index] = values.reduce((prev, curr) => {
+                const value = Number(curr);
+                if (!isNaN(value)) {
+                  return prev + curr;
+                } else {
+                  return prev;
+                }
+              }, 0);
+              sums[index];
+              return
+            }else if(index === 3){
+              const values = data.map(item => Number(item[column.property]));
+              sums[index] = values.reduce((prev, curr) => {
+                const value = Number(curr);
+                if (!isNaN(value)) {
+                  return prev + curr;
+                } else {
+                  return prev;
+                }
+              }, 0);
+              sums[index];
+              return
+            }else if(index === 4){
+              const values = data.map(item => Number(item[column.property]));
+              sums[index] = values.reduce((prev, curr) => {
+
+                const value = Number(curr);
+                //   debugger
+
+                // value = value.replace(',','')
+                if (!isNaN(value)) {
+
+                  return prev + curr;
+                } else {
+                  //   // console.log(prev)
+                  return prev;
+                }
+              }, 0);
+              sums[index]
+              return
+            }else if(index === 5){
+              const values = data.map(item => Number(item[column.property]));
+              sums[index] = values.reduce((prev, curr) => {
+
+                const value = Number(curr);
+                //   debugger
+
+                // value = value.replace(',','')
+                if (!isNaN(value)) {
+
+                  return prev + curr;
+                } else {
+                  //   // console.log(prev)
+                  return prev;
+                }
+              }, 0);
+              sums[index]
+            }else if(index === 7){
+              const values = data.map(item => Number(item[column.property]));
+              sums[index] = values.reduce((prev, curr) => {
+
+                const value = Number(curr);
+                //   debugger
+
+                // value = value.replace(',','')
+                if (!isNaN(value)) {
+
+                  return prev + curr;
+                } else {
+                  //   // console.log(prev)
+                  return prev;
+                }
+              }, 0);
+              sums[index]
+            }
+            else{
+              sums[index]=''
+              return
+            }
+          });
+          return sums;
+      },
+        print(id) {
+            let printPage = document.getElementById(id);
+            var f = document.getElementById('printf');
+            f.contentDocument.write(printPage.innerHTML);
+            f.contentDocument.write(`<style type="text/css">
+                .el-table td, .el-table th.is-leaf {
+                    border-bottom: 1px solid #EBEEF5;
+                }.el-table .cell, .el-table--border td:first-child .cell, .el-table--border th:first-child .cell {
+                padding-left: 10px;
+            }
+            .el-table td, .el-table th.is-leaf {
+                    border-bottom: 1px solid #EBEEF5;
+                }
+            .el-table thead {
+                color: #909399;
+                font-weight: 500;
+            }
+            .el-table td, .el-table th {
+                padding: 12px 0;
+                min-width: 0;
+                box-sizing: border-box;
+                text-overflow: ellipsis;
+                vertical-align: middle;
+                position: relative;
+                text-align: left;
+            }
+            .el-table__body-wrapper, .el-table__footer-wrapper, .el-table__header-wrapper {
+                width: 100%;
+            }
+            .el-table--border td, .el-table--border th, .el-table__body-wrapper .el-table--border.is-scrolling-left~.el-table__fixed {
+                    border-right: 1px solid #EBEEF5;
+                }
+            .el-table__body-wrapper {
+                overflow-x:hidden;
+                overflow-y:scroll;
+                position: relative;
+            }
+            .el-table th>.cell {
+                display: inline-block;
+                box-sizing: border-box;
+                position: relative;
+                vertical-align: middle;
+                padding-left: 10px;
+                padding-right: 10px;
+                width: 100%;
+            }
+            .el-table--mini, .el-table--small, .el-table__expand-icon {
+                font-size: 12px;
+            }
+            .el-table .cell, .el-table--border td:first-child .cell, .el-table--border th:first-child .cell {
+                padding-left: 10px;
+            }
+            .el-table .cell {
+                box-sizing: border-box;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: normal;
+                word-break: break-all;
+                line-height: 23px;
+                padding-right: 10px;
+            }
+            .A4{
+                background: #fff;
+                margin:0 auto;
+                
+            border:1px solid #ddd;
+
+            }
+                    </style>`);
+            f.contentDocument.close();
+            f.contentWindow.print();
+        },
+        // 画图
+        drawLine(id, data, series, color) {
+            // 基于准备好的dom，初始化echarts实例
+            //// console.log(this.$echarts);
+
+            let myChart = this.$echarts.init(document.getElementById(id));
+            var option = {
+                color,
+                title: {},
+                tooltip: {},
+                legend: {
+                    data: ['在校读者(有效)', '总借阅量', '借阅种数', '借阅册数', '人均借阅']
+                },
+                xAxis: {
+                    data
+                },
+                dataZoom: [
+                    {
+                        type: 'inside'
+                    },
+                    {
+                        type: 'slider'
+                    }
+                ],
+                yAxis: {},
+                series: [
+                    {
+                        name: '在校读者(有效)',
+                        type: 'bar',
+                        data: series[0]
+                    },
+                    {
+                        name: '总借阅量',
+                        type: 'bar',
+                        data: series[1]
+                    },
+                    {
+                        name: '借阅种数',
+                        type: 'bar',
+                        data: series[2]
+                    },
+                    {
+                        name: '借阅册数',
+                        type: 'bar',
+                        data: series[3]
+                    },
+                    {
+                        name: '人均借阅',
+                        type: 'bar',
+                        data: series[4]
+                    }
+                ]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+            // 绘制图表
+            // myChart.setOption({
+            //     color,
+            //     // title: {},
+            //     // tooltip: {
+            //     //     trigger: 'item',
+            //     //     formatter: '{a} <br/>{b} : {c} ({d}%)'
+            //     // },
+            //      xAxis: [
+            //         {
+            //             // type: 'category',
+            //             // axisTick: {show: false},
+            //             data:['国家标准','馆藏册数','平均复本','应补数']
+            //         }
+            //     ],
+            //     // legend: {
+            //     //     orient: 'vertical',
+            //     //     left: 'left',
+            //     //     data
+            //     // },
+            //     series:{
+            //        name:'国家标准',
+            //        type:'bar',
+            //        data:[100,1001,100,100]
+            //     }
+            // });
+        }
+    }
+};
+</script>
+
+<style>
+.searchInfo {
+    padding-top: 20px;
+}
+.color_d {
+    text-align: center;
+    color: #dddddd;
+}
+.over {
+    overflow: auto;
+}
+.el-table__footer-wrapper{
+    position:inherit !important;
+    bottom: 0;
+}
+
+</style>

@@ -1,0 +1,209 @@
+<template>
+    <div>
+        <div class="container" :style="'height:' + height + 'px'">
+            <div class="display_flex between header_title padding_20 m-b-20">
+                <div class>读者清单</div>
+                <div class="display_flex">
+                    <el-button-group>
+                        <el-button type="primary" plain class="add m-r-20" icon='el-icon-caret-right'
+                            @click="lookFor">报表预览</el-button>
+                        <el-button type="primary" plain icon="el-icon-setting" @click="jump">报表导出格式设置</el-button>
+                    </el-button-group>
+                </div>
+            </div>
+            <div class="padding_20">
+                <form-data :row="1" :list="list" :model='form' @getForm="getForm"></form-data>
+                <div class="set">
+                    <!-- <el-button type="primary" @click="jump" class="" >报表导出格式设置</el-button> -->
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 弹框 -->
+        <el-dialog title="报表导出格式设置" :visible.sync="createModel" width="90%" top='1vh' :close-on-click-modal='false'>
+            <div>
+                <set-view :url="'/manage/unit/circulation/circulationExcel/circulationReaderResForExcelField'"
+                    @chooseName='chooseName' @showList='showList'></set-view>
+                <!-- url 是 -->
+            </div>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="createModel = false">取 消</el-button>
+                <el-button type="primary" @click="createModel = false">确 定</el-button>
+            </span>
+        </el-dialog>
+    </div>
+</template>
+
+<script>
+import formData from '../../../view/form';
+import setView from './page/set'
+export default {
+    components: {
+        formData,
+        setView
+    },
+    data() {
+        return {
+            bus: this.bus(this),
+            list: [
+                { name: '读者证号', id: 'readerStartNumber', type: 'around', end: 'readerEndNumber' },
+                {
+                    name: '办证时间',
+                    id: 'startBzTime',
+                    type: 'aroundTimes',
+                    end: 'endSBzTime'
+                },
+                {
+                    name: '截止日期',
+                    id: 'startJzTime',
+                    type: 'aroundTimes',
+                    end: 'endJzTime'
+                },
+                { name: '读者类型', id: 'readerTypeNameId', type: 'select', relation: 'readerTypeName', options: [] },
+                {
+                    name: '读者状态',
+                    id: 'status',
+                    type: 'select',
+                    options: []
+                },
+
+                { name: '读者单位', id: 'readerUnitNameTree', type: 'selectTree', options: [] },
+                {
+                    name: '办证人',
+                    id: 'managerName',
+
+                },
+                { name: '人脸认证', id: 'isUploadFace', type: 'select', relation: 'isUploadFaceName', options: [] },
+                { name: '有无照片', id: 'isPhoto', type: 'select', relation: 'isPhotoName', options: [] },
+
+
+
+            ],
+            form: {},
+            height: '',
+            arr: [],
+            createModel: false,
+            format: {},
+            listData: [],
+            lists: {}
+        };
+    },
+    created() {
+        this.metaList();
+        this.getType();
+        this.getRead();
+        // this.getPlace();
+
+        this.calcTableHeight();
+        window.addEventListener('resize', () => {
+            this.calcTableHeight();
+        });
+        this.list[7].options = [
+            {
+                id: 0,
+                name: "认证失败"
+            },
+            {
+                id: 1,
+                name: "认证通过"
+            }
+        ]
+        this.list[8].options = [
+            {
+                id: 0,
+                name: "无照片"
+            },
+            {
+                id: 1,
+                name: "有照片"
+            }
+        ]
+    },
+    methods: {
+        calcTableHeight(val) {
+            setTimeout(res => {
+
+                this.height = document.documentElement.clientHeight - 170;
+
+            }, 100)
+        },
+        jump() {
+            this.createModel = true
+            // this.$router.push('set')
+        },
+        chooseName(val) {
+            this.format = val
+        },
+        showList(val) {
+            this.listData = val
+        },
+        // 生成报表
+        lookFor() {
+            this.$router.push({
+                path: '/circulation/report/readLists',
+                query: { info: JSON.stringify(this.form), format: JSON.stringify(this.format), list: JSON.stringify(this.listData) }
+            });
+        },
+
+        getForm(val) {
+            this.form = val;
+        },
+        // // // 获取地址
+        // getPlace() {
+        //     this.ax.get('/manage/unit/report/journalReport/bookCollection').then(res => {
+        //         // console.log(res);
+
+        //         this.list[2].options = res.content;
+
+        //     });
+        // },
+        // 读者类型
+        getType() {
+            this.ax.get('/manage/unit/report/journalReport/readerType', { params: { platformId: JSON.parse(localStorage.getItem("user")).platform.id } }).then(res => {
+                // console.log(res.content);
+
+                // res.content = res.content.push({name:'全部类型',id:''})
+                let arr = res.content;
+                this.list[3].options = arr;
+
+
+            });
+        },
+        //   读者单位
+        getRead() {
+            this.ax.get('/manage/unit/report/journalReport/readerUnit', { params: { presenceStatus: 1, platformId: JSON.parse(localStorage.getItem("user")).platform.id } }).then(res => {
+                this.list[5].options = res.content;
+            });
+        },
+        metaList() {
+            this.ax.get('/manage/meta', { params: { path: 'com.cq1080.library.cluster.bean.entity.Reader' } }).then(res => {
+                res.insertable = false;
+                res.edit = 'EDIT_BOTH';
+                res.subs.map(it => {
+                    if (it.key == 'status') {
+                        this.list[4].options = it.searchOption.map(item => {
+                            return { name: item.name, id: item.key };
+                        });
+                    }
+                    // if (it.key == 'documentAppointmentStatus') {
+                    //     this.list[4].options = it.searchOption.map(item => {
+                    //         return { name: item.name, id: item.key };
+                    //     });
+                    // // console.log( this.list[4].options)
+                    // }
+                    // });
+
+                });
+            })
+        }
+    }
+};
+</script>
+
+<style scoped>
+.set {
+    display: flex;
+    justify-content: flex-end;
+}
+</style>
