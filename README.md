@@ -1,1 +1,7 @@
-npm install --arch=ia32 electron
+# RFID 微型图书馆
+
+- 用途: 一个小型图书借还书柜,进行图书的上架下架,借还功能
+- 技术栈: vue3+electron,连接读写版->单格盘点->单格盘点->合并两次盘点结果->通过比对接口进行书柜图书比对->调用借还书接口->完成借还
+- 启动方式: 第一步 npm run dev 同时在开一个窗口运行 npm run start
+- 打包: npm run electron:build.exe
+- 评价: 些许狗屎
