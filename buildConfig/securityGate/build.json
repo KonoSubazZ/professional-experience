@@ -1,0 +1,48 @@
+{
+  "productName": "蓝鲸图书馆安全门软件",
+  "appId": "com.bluewhale.security_gate",
+  "buildVersion": "1.0.0-GATE",
+  "directories": {
+    "output": "build/security_gate"
+  },
+  "files": [
+    "dist/electron/**/*"
+  ],
+  "asar": false,
+  "nsis": {
+    "oneClick": false,
+    "allowElevation": true,
+    "allowToChangeInstallationDirectory": true,
+    "installerIcon": "./static/ico.ico",
+    "uninstallerIcon": "./static/ico.ico",
+    "installerHeaderIcon": "./static/ico.ico",
+    "include": "buildConfig/securityGate/installer.nsh"
+  },
+  "electronDownload": {
+    "mirror": "https://npm.taobao.org/mirrors/electron/"
+  },
+  "extraResources": [
+    {
+      "from": "./extraResources/devices/common/",
+      "to": "extraResources/modules/"
+    },
+    {
+      "from": "./buildConfig/securityGate/config/",
+      "to": "config/"
+    },
+    {
+      "from": "./extraResources/icon/",
+      "to": "extraResources/icon/"
+    },
+    {
+      "from": "./extraResources/modules/",
+      "to": "extraResources/modules/"
+    }
+  ],
+  "win": {
+    "icon": "build/icons/icon.ico",
+    "target": [
+      "nsis"
+    ]
+  }
+}

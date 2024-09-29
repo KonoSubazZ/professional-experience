@@ -1,0 +1,40 @@
+{
+  "productName": "蓝鲸图书馆OPAC",
+  "appId": "com.bluewhale.work_deck_opac",
+  "buildVersion": "1.0.0-workdeckopac",
+  "directories": {
+    "output": "build/work_deck_opac"
+  },
+  "files": [
+    "dist/electron/**/*"
+  ],
+  "asar": false,
+  "nsis": {
+    "oneClick": false,
+    "allowElevation": true,
+    "allowToChangeInstallationDirectory": true,
+    "installerIcon": "./static/ico.ico",
+    "uninstallerIcon": "./static/ico.ico",
+    "installerHeaderIcon": "./static/ico.ico",
+    "include": "buildConfig/workdeckOpac/installer.nsh"
+  },
+  "electronDownload": {
+    "mirror": "https://npm.taobao.org/mirrors/electron/"
+  },
+  "extraResources": [
+    {
+      "from": "./buildConfig/workdeckOpac/config/",
+      "to": "config"
+    },
+    {
+      "from": "./extraResources/icon/",
+      "to": "extraResources/icon/"
+    }
+  ],
+"win": {
+"icon": "build/icons/icon.ico",
+"target": [
+"nsis"
+]
+}
+}

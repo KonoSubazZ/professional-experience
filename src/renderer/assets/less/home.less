@@ -1,0 +1,172 @@
+#home {
+  width: 100vw;
+  height: 100vh;
+
+  .home_bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .home_title {
+    position: absolute;
+    top: 3%;
+    left: 0;
+    right: 0;
+    width: 40%;
+    min-width: 400px;
+    margin: 0 auto;
+  }
+
+  .home_title_light {
+    top: 8%;
+  }
+
+  .home_btn_list {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+
+    .list_item {
+      width: 10%;
+      min-width: 100px;
+      height: auto;
+      margin: 0 2%;
+      cursor: pointer;
+
+      &:active {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .light_list {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 50%;
+    height: 50%;
+    transform: translateY(-40%);
+
+    .borrow,
+    .borrow-dark {
+      width: 28%;
+      height: 100%;
+      background: linear-gradient(180deg,
+          rgba(4, 195, 235, 1) 0%,
+          rgba(0, 220, 175, 1) 100%);
+      overflow: hidden;
+      margin-right: 2.5%;
+    }
+
+    .borrow-dark {
+      margin-left: 2.5%;
+      margin-right: 0;
+    }
+
+    .light_right {
+      height: 100%;
+
+      .back {
+        background: linear-gradient(180deg,
+            rgba(247, 174, 2, 1) 0%,
+            rgba(253, 149, 58, 1) 100%);
+        height: 48%;
+        width: 100%;
+
+        .back_bg {
+          width: 50%;
+          height: 100%;
+          margin-left: 50%;
+        }
+      }
+
+      .right_bottom {
+        width: 100%;
+        height: 48%;
+        margin-top: 4%;
+
+        .continue {
+          background: linear-gradient(180deg,
+              rgba(45, 182, 242, 1) 0%,
+              rgba(63, 136, 252, 1) 100%);
+          width: 48%;
+          height: 100%;
+          margin-right: 4%;
+        }
+
+        .search {
+          background: linear-gradient(360deg,
+              rgba(250, 121, 150, 1) 0%,
+              rgba(253, 147, 126, 1) 100%);
+          width: 48%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .dark {
+    .back {
+      background: #1da1f2 !important;
+    }
+
+    .continue {
+      background: #0f316d !important;
+    }
+
+    .search {
+      background: #071e44 !important;
+    }
+
+    .borrow {
+      background: #02d8f0 !important;
+    }
+  }
+
+  .card {
+    .back {
+      background: linear-gradient(90deg, #58e3e4 0%, #1da1f2 100%) !important;
+    }
+
+    .continue {
+      background: linear-gradient(90deg, #c3a0f9 0%, #9b63f3 100%) !important;
+    }
+
+    .search {
+      background: linear-gradient(90deg, #79cefe 0%, #55e27b 100%) !important;
+    }
+
+    .borrow {
+      background: linear-gradient(180deg,
+          rgba(115, 201, 251, 1) 0%,
+          rgba(74, 82, 188, 1) 100%) !important;
+    }
+  }
+
+  .inventory {
+    .back {
+      background: linear-gradient(180deg, rgba(255, 150, 95, 1) 0%, rgba(255, 97, 96, 1) 100%) !important;
+    }
+
+    .continue {
+      background: linear-gradient(180deg, rgba(96, 194, 255, 1) 0%, rgba(96, 154, 255, 1) 100%) !important;
+    }
+
+    .search {
+      background: linear-gradient(360deg, rgba(96, 82, 249, 1) 0%, rgba(177, 102, 254, 1) 100%) !important;
+    }
+
+    .borrow {
+      background: linear-gradient(180deg, rgba(233, 213, 102, 1) 0%, rgba(133, 208, 80, 1) 100%) !important;
+    }
+  }
+}

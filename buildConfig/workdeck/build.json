@@ -1,0 +1,61 @@
+{
+  "productName": "蓝鲸图书馆工作站",
+  "appId": "com.bluewhale.work_deck",
+  "buildVersion": "1.0.0-workdeck",
+  "directories": {
+    "output": "build/work_deck"
+  },
+  "files": [
+    "dist/electron/**/*"
+  ],
+  "asar": false,
+  "nsis": {
+    "oneClick": false,
+    "allowElevation": true,
+    "allowToChangeInstallationDirectory": true,
+    "installerIcon": "./static/ico.ico",
+    "uninstallerIcon": "./static/ico.ico",
+    "installerHeaderIcon": "./static/ico.ico",
+    "include": "buildConfig/workdeck/installer.nsh"
+  },
+  "electronDownload": {
+    "mirror": "https://npm.taobao.org/mirrors/electron/"
+  },
+  "extraResources": [
+    {
+      "from": "./extraResources/devices/common/",
+      "to": "extraResources/modules/"
+    },
+    {
+      "from": "./extraResources/devices/baidu/",
+      "to": "extraResources/"
+    },
+    {
+      "from": "./extraResources/sdk/",
+      "to": "sdk/"
+    },
+    {
+      "from": "./buildConfig/workDeck/config/",
+      "to": "config/"
+    },
+    {
+      "from": "./extraResources/icon/",
+      "to": "extraResources/icon/"
+    },
+    {
+      "from": "./extraResources/modules/",
+      "to": "extraResources/modules/"
+    }
+  ],
+"win": {
+"icon": "build/icons/icon.ico",
+"target": [
+  {
+    "target": "nsis",
+    "arch": [
+      "x64"
+    ]
+  }
+]
+}
+}

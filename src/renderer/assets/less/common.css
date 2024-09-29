@@ -1,0 +1,1434 @@
+body {
+  user-select: none;
+}
+ /deep/ .el-dropdown-menu {
+  background-color: red !important;
+}
+ /deep/ .el-dropdown-menu .el-dropdown-menu__item:hover {
+  background-color: white !important;
+}
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.el-icon-info:before {
+  font-size: 30px !important;
+}
+.el-message-box {
+  width: 550px !important;
+  height: 200px !important;
+}
+.el-message-box__header {
+  position: relative;
+  padding: 15px 15px 30px !important;
+}
+.el-message-box__status {
+  font-size: 30px !important;
+}
+.el-message-box__content {
+  padding: 30px 15px !important;
+  color: #606266;
+  font-size: 23px !important;
+}
+.el-button--mini,
+.el-button--small {
+  font-size: 18px !important;
+  border-radius: 3px;
+}
+/*字体大小*/
+.font-56 {
+  font-size: 56px;
+}
+.font-38 {
+  font-size: 38px;
+}
+.font-32 {
+  font-size: 32px;
+}
+.font-30 {
+  font-size: 30px;
+}
+.font-28 {
+  font-size: 28px;
+}
+.font-24 {
+  font-size: 25px;
+}
+.font-18 {
+  font-size: 1.7rem;
+}
+.font-14 {
+  font-size: 1.1rem !important;
+}
+/*圆角*/
+.bor-rad-20 {
+  border-radius: 20px;
+}
+.bor-rad-40 {
+  border-radius: 40px;
+}
+.bor-rad-round {
+  border-radius: 100%;
+}
+/*宽度*/
+.w-light-tag {
+  width: 52px;
+  height: 52px;
+}
+.w-progress-img {
+  width: 330px;
+  height: 130px;
+}
+.w-200 {
+  width: 200px;
+  height: 200px;
+}
+/*边距*/
+.mt-percent-5 {
+  margin-top: 5%;
+}
+.mt-20 {
+  margin-top: 10px;
+}
+.mt-10 {
+  margin-top: 10px;
+}
+.mr-20 {
+  margin-right: 20px;
+}
+.mr-10 {
+  margin-right: 10px;
+}
+.mr-5 {
+  margin-right: 5px;
+}
+/**以上，需要适配**/
+/**以下，不需要适配**/
+/*字体*/
+.font-bold {
+  font-weight: bold;
+}
+.font-hei {
+  font-family: "黑体";
+}
+/*flex*/
+.flex-row {
+  display: flex !important;
+  align-items: center;
+}
+.flex-center {
+  justify-content: center;
+}
+.align-top {
+  align-items: flex-start;
+}
+.flex-between {
+  justify-content: space-between;
+}
+.flex-one {
+  flex: 1;
+}
+.flex-two {
+  flex: 1.2;
+}
+.margin-center {
+  margin: 0 auto;
+}
+/*posi*/
+.posi-rela {
+  position: relative;
+}
+.posi-center {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  display: inline-block;
+}
+.posi-center-top-10 {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  display: inline-block;
+}
+.posi-all {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.posi-abso {
+  position: absolute;
+}
+/**/
+.text-center {
+  text-align: center;
+}
+.pointer {
+  cursor: pointer;
+}
+.nowarp {
+  white-space: nowrap;
+}
+.transparent {
+  opacity: 0;
+}
+/*color*/
+.color-red {
+  color: #fb5151;
+}
+.color-blue {
+  color: #1da1f2;
+}
+.color-white {
+  color: white;
+}
+.color-333 {
+  color: #333;
+}
+.color-999 {
+  color: #999999;
+}
+/*背景色*/
+.bg-light {
+  background-color: #1da1f2;
+}
+.max-table {
+  overflow: auto;
+}
+.w-24 {
+  width: 24px;
+  height: 24px;
+}
+.pd-20 {
+  padding: 20px;
+  box-sizing: border-box;
+}
+.form-input {
+  box-sizing: border-box;
+  background-color: #f1f0f5;
+  transition: all 0.05s ease-in-out;
+  width: 75%;
+  display: flex;
+  align-items: center;
+}
+.form-input-acitve {
+  background-color: white;
+  border: 1px solid #1da1f2;
+}
+.form-blue-btn,
+.form-yellow-btn {
+  outline: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.form-blue-btn {
+  background-color: #1da1f2;
+}
+.form-yellow-btn {
+  background-color: #fda810;
+}
+input[type="text"],
+input[type="password"] {
+  border: none;
+  outline: 0px;
+  flex: 1;
+  background-color: transparent;
+  width: 100%;
+}
+.offline-100-vh input {
+  border: 1px solid #a5a1a1;
+  background-color: #fff;
+}
+.el-message-box input {
+  border: 1px solid #a5a1a1 !important;
+}
+.offline-100-vh .input-w-layout-bg input {
+  color: black !important;
+  font-weight: bold;
+  background-color: #b8bcc5 !important;
+}
+.selectType {
+  width: 100%;
+}
+.selectType input {
+  font-size: 28px;
+  border: none;
+  outline: 0px;
+  flex: 1;
+  background-color: transparent;
+  width: 100%;
+  padding: 0px;
+  color: black;
+}
+@media screen and (max-width: 768px) {
+  .font-56 {
+    font-size: 21px;
+  }
+  .font-38 {
+    font-size: 18px;
+  }
+  .font-32 {
+    font-size: 16px;
+  }
+  .font-30 {
+    font-size: 14px;
+  }
+  .font-28 {
+    font-size: 1.7rem;
+  }
+  .font-24 {
+    font-size: 25px;
+  }
+  .font-20 {
+    font-size: 10px;
+  }
+  .font-18 {
+    font-size: 1.7rem;
+  }
+  .font-16 {
+    font-size: 8px;
+  }
+  .font-14 {
+    font-size: 1.1rem !important;
+  }
+  .selectType input {
+    font-size: 14px;
+  }
+  /*图片宽度*/
+  .w-light-tag {
+    width: 28px;
+    height: 28px;
+  }
+  .w-progress-img {
+    width: 330px;
+    height: 130px;
+  }
+  .w-250 {
+    width: 100px;
+    height: 100px;
+  }
+  .w-down {
+    width: 10px;
+    height: 10px;
+  }
+  .w-80 {
+    width: 30px;
+    height: 30px;
+  }
+  .w-40 {
+    width: 15px;
+    height: 15px;
+  }
+  .w-progress-border {
+    width: 1.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  .w-dark-type {
+    width: 88px;
+    height: 67px;
+  }
+  /*边距*/
+  .mt-110 {
+    margin-top: 35px;
+  }
+  .mt-40 {
+    margin-top: 15px;
+  }
+  .mt-20 {
+    margin-top: 10px;
+  }
+  .mt-10 {
+    margin-top: 2px;
+  }
+  /*负边距*/
+  .mt-110-table {
+    margin-top: -10px;
+  }
+  .mt-110-upper {
+    margin-top: -15px;
+  }
+  /*圆角*/
+  .bor-rad-20 {
+    border-radius: 5px;
+  }
+  .w-24 {
+    width: 14px;
+    height: 14px;
+  }
+  .pd-20 {
+    padding: 5px;
+  }
+  .form-input {
+    height: 40px;
+    padding: 8px;
+    border-radius: 40px;
+  }
+  .form-blue-btn,
+  .form-yellow-btn {
+    padding: 7px 10px;
+    border-radius: 40px;
+  }
+  .w-120 {
+    width: 45px;
+    height: 45px;
+  }
+  .w-loading {
+    width: 20px;
+    height: auto;
+    margin: 0 9px;
+  }
+  .bottom-30 {
+    bottom: -20px;
+  }
+  .w-type {
+    width: 110px;
+    height: 55px;
+  }
+  .w-50 {
+    width: 25px;
+    height: 25px;
+  }
+  .w-status-img {
+    width: 84px;
+    height: auto;
+  }
+  .w-status-dark {
+    width: 100px;
+    height: auto;
+  }
+  .w-status-light {
+    width: 26rem;
+    height: auto;
+  }
+  .w-scan {
+    width: 600px;
+    height: auto;
+  }
+  .w-scan-card {
+    width: 150px;
+    height: 150px;
+  }
+  .w-scan-posi {
+    width: 300px;
+    height: 300px;
+  }
+  .w-user-bg {
+    width: 118px;
+  }
+  .h-40 {
+    height: 14px;
+    line-height: 14px;
+  }
+  .h-52 {
+    height: 20px;
+    line-height: 20px;
+  }
+  .max-table {
+    max-height: 100px;
+    height: 100px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .font-56 {
+    font-size: 21px;
+  }
+  .font-38 {
+    font-size: 18px;
+  }
+  .font-32 {
+    font-size: 16px;
+  }
+  .font-30 {
+    font-size: 14px;
+  }
+  .font-28 {
+    font-size: 1.7rem;
+  }
+  .font-24 {
+    font-size: 25px;
+  }
+  .font-20 {
+    font-size: 10px;
+  }
+  .font-18 {
+    font-size: 1.7rem;
+  }
+  .font-16 {
+    font-size: 8px;
+  }
+  .font-14 {
+    font-size: 1.1rem !important;
+  }
+  .selectType input {
+    font-size: 14px;
+  }
+  /*宽度*/
+  .w-light-tag {
+    width: 28px;
+    height: 28px;
+  }
+  .w-250 {
+    width: 100px;
+    height: 100px;
+  }
+  .w-80 {
+    width: 30px;
+    height: 30px;
+  }
+  .w-40 {
+    width: 15px;
+    height: 15px;
+  }
+  .w-down {
+    width: 10px;
+    height: 10px;
+  }
+  .w-progress-border {
+    width: 1.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  .w-dark-type {
+    width: 88px;
+    height: 67px;
+  }
+  /*边距*/
+  .mt-110 {
+    margin-top: 35px;
+  }
+  .mt-40 {
+    margin-top: 15px;
+  }
+  .mt-20 {
+    margin-top: 10px;
+  }
+  .mt-10 {
+    margin-top: 2px;
+  }
+  /*负边距*/
+  .mt-110-table {
+    margin-top: -10px;
+  }
+  .mt-110-upper {
+    margin-top: -15px;
+  }
+  /*圆角*/
+  .bor-rad-20 {
+    border-radius: 5px;
+  }
+  .w-24 {
+    width: 14px;
+    height: 14px;
+  }
+  .pd-20 {
+    padding: 5px;
+  }
+  .form-input {
+    height: 40px;
+    padding: 8px;
+    border-radius: 40px;
+  }
+  .form-blue-btn,
+  .form-yellow-btn {
+    padding: 7px 10px;
+    border-radius: 40px;
+  }
+  .w-120 {
+    width: 45px;
+    height: 45px;
+  }
+  .w-loading {
+    width: 20px;
+    height: auto;
+    margin: 0 11px;
+  }
+  .bottom-30 {
+    bottom: -20px;
+  }
+  .w-type {
+    width: 110px;
+    height: 55px;
+  }
+  .w-50 {
+    width: 25px;
+    height: 25px;
+  }
+  .w-status-img {
+    width: 84px;
+    height: auto;
+  }
+  .w-status-dark {
+    width: 100px;
+    height: auto;
+  }
+  .w-status-light {
+    width: 26rem;
+    height: auto;
+  }
+  .w-scan {
+    width: 600px;
+    height: auto;
+  }
+  .w-scan-card {
+    width: 150px;
+    height: 150px;
+  }
+  .w-scan-posi {
+    width: 300px;
+    height: 300px;
+  }
+  .w-user-bg {
+    width: 118px;
+  }
+  .h-40 {
+    min-height: 14px;
+    line-height: 14px;
+  }
+  .h-52 {
+    min-height: 20px;
+    line-height: 20px;
+  }
+  .max-table {
+    max-height: 100px;
+    height: 100px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .font-56 {
+    font-size: 28px;
+  }
+  .font-38 {
+    font-size: 22px;
+  }
+  .font-32 {
+    font-size: 20px;
+  }
+  .font-30 {
+    font-size: 18px;
+  }
+  .font-28 {
+    font-size: 1.7rem;
+  }
+  .font-24 {
+    font-size: 25px;
+  }
+  .font-20 {
+    font-size: 12px;
+  }
+  .font-18 {
+    font-size: 1.7rem;
+  }
+  .font-16 {
+    font-size: 10px;
+  }
+  .font-14 {
+    font-size: 1.1rem !important;
+  }
+  .selectType input {
+    font-size: 16px;
+  }
+  /*宽度*/
+  .w-light-tag {
+    width: 32px;
+    height: 32px;
+  }
+  .w-250 {
+    width: 130px;
+    height: 130px;
+  }
+  .w-80 {
+    width: 40px;
+    height: 40px;
+  }
+  .w-down {
+    width: 11px;
+    height: 11px;
+  }
+  .w-40 {
+    width: 20px;
+    height: 20px;
+  }
+  .w-progress-border {
+    width: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .w-dark-type {
+    width: 118px;
+    height: 84px;
+  }
+  /*边距*/
+  .mt-110 {
+    margin-top: 50px;
+  }
+  .mt-40 {
+    margin-top: 20px;
+  }
+  .mt-20 {
+    margin-top: 12px;
+  }
+  .mt-10 {
+    margin-top: 2px;
+  }
+  /*负边距*/
+  .mt-110-table {
+    margin-top: -20px;
+  }
+  .mt-110-upper {
+    margin-top: -35px;
+  }
+  /*圆角*/
+  .bor-rad-20 {
+    border-radius: 8px;
+  }
+  .w-24 {
+    width: 16px;
+    height: 16px;
+  }
+  .pd-20 {
+    padding: 8px;
+  }
+  .form-input {
+    height: 40px;
+    padding: 11px;
+    border-radius: 40px;
+  }
+  .form-blue-btn,
+  .form-yellow-btn {
+    padding: 9px 16px;
+    border-radius: 40px;
+  }
+  .w-120 {
+    width: 60px;
+    height: 60px;
+  }
+  .w-loading {
+    width: 25px;
+    height: auto;
+    margin: 0 13px;
+  }
+  .bottom-30 {
+    bottom: -23px;
+  }
+  .w-type {
+    width: 140px;
+    height: 70px;
+  }
+  .w-50 {
+    width: 30px;
+    height: 30px;
+  }
+  .w-status-img {
+    width: 104px;
+    height: auto;
+  }
+  .w-status-dark {
+    width: 120px;
+    height: auto;
+  }
+  .w-status-light {
+    width: 26rem;
+    height: auto;
+  }
+  .w-scan {
+    width: 600px;
+    height: auto;
+  }
+  .w-scan-card {
+    width: 174px;
+    height: 174px;
+  }
+  .w-scan-posi {
+    width: 300px;
+    height: 300px;
+  }
+  .w-user-bg {
+    width: 143px;
+  }
+  .h-40 {
+    min-height: 16px;
+  }
+  .h-52 {
+    min-height: 24px;
+  }
+  .max-table {
+    max-height: 120px;
+    height: 120px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .font-56 {
+    font-size: 35px;
+  }
+  .font-38 {
+    font-weight: bold;
+    font-size: 26px;
+  }
+  .font-32 {
+    font-size: 24px;
+  }
+  .font-30 {
+    font-size: 18px;
+  }
+  .font-28 {
+    font-size: 1.7rem;
+  }
+  .font-24 {
+    font-size: 25px;
+  }
+  .font-20 {
+    font-size: 14px;
+  }
+  .font-18 {
+    font-size: 1.7rem;
+  }
+  .font-16 {
+    font-size: 12px;
+  }
+  .font-14 {
+    font-size: 1.1rem !important;
+  }
+  .selectType input {
+    font-size: 19px;
+  }
+  /*宽度*/
+  .w-light-tag {
+    width: 36px;
+    height: 36px;
+  }
+  .w-250 {
+    width: 160px;
+    height: 160px;
+  }
+  .w-80 {
+    width: 50px;
+    height: 50px;
+  }
+  .w-40 {
+    width: 25px;
+    height: 25px;
+  }
+  .w-down {
+    width: 12px;
+    height: 12px;
+  }
+  .w-progress-border {
+    width: 2.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+  .w-dark-type {
+    width: 148px;
+    height: 101px;
+  }
+  /*边距*/
+  .mt-110 {
+    margin-top: 65px;
+  }
+  .mt-40 {
+    margin-top: 25px;
+  }
+  .mt-20 {
+    margin-top: 14px;
+  }
+  .mt-10 {
+    margin-top: 4px;
+  }
+  /*负边距*/
+  .mt-110-table {
+    margin-top: -25px;
+  }
+  .mt-110-upper {
+    margin-top: -30px;
+  }
+  /*圆角*/
+  .bor-rad-20 {
+    border-radius: 11px;
+  }
+  .w-24 {
+    width: 18px;
+    height: 18px;
+  }
+  .pd-20 {
+    padding: 11px;
+  }
+  .form-input {
+    height: 50px;
+    padding: 14px;
+    border-radius: 40px;
+  }
+  .httpSelect {
+    width: 38% !important;
+  }
+  .form-blue-btn,
+  .form-yellow-btn {
+    padding: 10px 22px;
+    border-radius: 40px;
+  }
+  .w-120 {
+    width: 75px;
+    height: 75px;
+  }
+  .w-loading {
+    width: 30px;
+    height: auto;
+    margin: 0 15px;
+  }
+  .font-18 {
+    font-size: 1.7rem;
+  }
+  .bottom-30 {
+    bottom: -26px;
+  }
+  .w-type {
+    width: 170px;
+    height: 85px;
+  }
+  .w-50 {
+    width: 35px;
+    height: 35px;
+  }
+  .w-status-img {
+    width: 124px;
+    height: auto;
+  }
+  .w-status-dark {
+    width: 140px;
+    height: auto;
+  }
+  .w-status-light {
+    width: 26rem;
+    height: auto;
+  }
+  .w-scan {
+    width: 600px;
+    height: auto;
+  }
+  .w-scan-card {
+    width: 234px;
+    height: 234px;
+  }
+  .w-scan-posi {
+    width: 300px;
+    height: 300px;
+  }
+  .w-user-bg {
+    width: 168px;
+  }
+  .h-40 {
+    min-height: 22px;
+  }
+  .h-52 {
+    min-height: 30px;
+  }
+  .max-table {
+    max-height: 150px;
+    height: 150px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .font-56 {
+    font-size: 42px;
+  }
+  .font-38 {
+    font-size: 30px;
+  }
+  .font-32 {
+    font-size: 24px;
+  }
+  .font-30 {
+    font-size: 22px;
+  }
+  .font-28 {
+    font-size: 1.7rem;
+  }
+  .font-24 {
+    font-size: 25px;
+  }
+  .font-20 {
+    font-size: 16px;
+  }
+  .font-18 {
+    font-size: 1.7rem;
+  }
+  .font-16 {
+    font-size: 13px;
+  }
+  .font-14 {
+    font-size: 1.1rem !important;
+  }
+  .selectType input {
+    font-size: 22px;
+  }
+  /*宽度*/
+  .w-light-tag {
+    width: 40px;
+    height: 40px;
+  }
+  .w-250 {
+    width: 190px;
+    height: 190px;
+  }
+  .w-80 {
+    width: 60px;
+    height: 60px;
+  }
+  .w-40 {
+    width: 30px;
+    height: 30px;
+  }
+  .w-down {
+    width: 13px;
+    height: 13px;
+  }
+  .w-progress-border {
+    width: 3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  .w-dark-type {
+    width: 178px;
+    height: 118px;
+  }
+  /*边距*/
+  .mt-110 {
+    margin-top: 80px;
+  }
+  .mt-40 {
+    margin-top: 30px;
+  }
+  .mt-20 {
+    margin-top: 16px;
+  }
+  .mt-10 {
+    margin-top: 6px;
+  }
+  /*负边距*/
+  .mt-110-upper {
+    margin-top: -50px;
+  }
+  .mt-110-table {
+    margin-top: -50px;
+  }
+  /*圆角*/
+  .bor-rad-20 {
+    border-radius: 14px;
+  }
+  .w-24 {
+    width: 20px;
+    height: 20px;
+  }
+  .pd-20 {
+    padding: 14px;
+  }
+  .form-input {
+    height: 60px;
+    padding: 14px;
+    border-radius: 40px;
+  }
+  .form-blue-btn,
+  .form-yellow-btn {
+    padding: 12px 28px;
+    border-radius: 40px;
+  }
+  .w-120 {
+    width: 90px;
+    height: 90px;
+  }
+  .w-loading {
+    width: 35px;
+    height: auto;
+    margin: 0 17px;
+  }
+  .bottom-30 {
+    bottom: -29px;
+  }
+  .w-type {
+    width: 200px;
+    height: 100px;
+  }
+  .w-50 {
+    width: 40px;
+    height: 40px;
+  }
+  .w-status-img {
+    width: 144px;
+    height: auto;
+  }
+  .w-status-dark {
+    width: 160px;
+    height: auto;
+  }
+  .w-status-light {
+    width: 26rem;
+    height: auto;
+  }
+  .w-scan {
+    width: 600px;
+    height: auto;
+  }
+  .w-scan-card {
+    width: 300px;
+    height: 300px;
+  }
+  .w-scan-posi {
+    width: 300px;
+    height: 300px;
+  }
+  .w-scan-posi {
+    width: 300px;
+    height: 300px;
+  }
+  .w-user-bg {
+    width: 193px;
+  }
+  .h-40 {
+    min-height: 28px;
+  }
+  .h-52 {
+    min-height: 36px;
+  }
+  .max-table {
+    max-height: 180px;
+    height: 180px;
+  }
+}
+@media screen and (min-width: 1680px) {
+  .font-56 {
+    font-size: 49px;
+  }
+  .font-38 {
+    font-size: 34px;
+  }
+  .font-32 {
+    font-size: 25px;
+  }
+  .font-30 {
+    font-size: 26px;
+  }
+  .font-28 {
+    font-size: 1.7rem;
+  }
+  .font-24 {
+    font-size: 25px;
+  }
+  .font-20 {
+    font-size: 18px;
+  }
+  .font-18 {
+    font-size: 1.7rem;
+  }
+  .font-16 {
+    font-size: 15px;
+  }
+  .font-14 {
+    font-size: 1.1rem !important;
+  }
+  .selectType input {
+    font-size: 26px;
+  }
+  /*宽度*/
+  .w-light-tag {
+    width: 44px;
+    height: 44px;
+  }
+  .w-250 {
+    width: 220px;
+    height: 220px;
+  }
+  .w-80 {
+    width: 70px;
+    height: 70px;
+  }
+  .w-40 {
+    width: 35px;
+    height: 35px;
+  }
+  .w-down {
+    width: 14px;
+    height: 14px;
+  }
+  .w-progress-border {
+    width: 3.5rem;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+  }
+  .w-dark-type {
+    width: 208px;
+    height: 135px;
+  }
+  /*边距*/
+  .mt-110 {
+    margin-top: 95px;
+  }
+  .mt-40 {
+    margin-top: 35px;
+  }
+  .mt-20 {
+    margin-top: 18px;
+  }
+  .mt-10 {
+    margin-top: 8px;
+  }
+  /*负边距*/
+  .mt-110-table {
+    margin-top: -50px;
+  }
+  .mt-110-upper {
+    margin-top: -50px;
+  }
+  /*圆角*/
+  .bor-rad-20 {
+    border-radius: 17px;
+  }
+  .w-24 {
+    width: 22px;
+    height: 22px;
+  }
+  .pd-20 {
+    padding: 17px;
+  }
+  .form-input {
+    height: 70px;
+    padding: 17px;
+    border-radius: 40px;
+  }
+  .form-blue-btn,
+  .form-yellow-btn {
+    padding: 11px 34px;
+    border-radius: 40px;
+  }
+  .w-120 {
+    width: 105px;
+    height: 105px;
+  }
+  .w-loading {
+    width: 53px;
+    height: auto;
+    margin: 0 19px;
+  }
+  .bottom-30 {
+    bottom: -32px;
+  }
+  .w-type {
+    width: 230px;
+    height: 115px;
+  }
+  .w-50 {
+    width: 45px;
+    height: 45px;
+  }
+  .w-status-img {
+    width: 164px;
+    height: auto;
+  }
+  .w-status-dark {
+    width: 180px;
+    height: auto;
+  }
+  .w-status-light {
+    width: 26rem;
+    height: auto;
+  }
+  .w-scan {
+    width: 500px;
+    height: auto;
+  }
+  .w-scan-card {
+    width: 350px;
+    height: 350px;
+  }
+  .w-scan-posi {
+    width: 300px;
+    height: 300px;
+  }
+  .w-user-bg {
+    width: 218px;
+  }
+  .h-40 {
+    min-height: 34px;
+  }
+  .h-52 {
+    min-height: 44px;
+  }
+  .max-table {
+    max-height: 220px;
+    height: 220px;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .font-56 {
+    font-size: 56px;
+  }
+  .font-38 {
+    font-size: 38px;
+  }
+  .font-32 {
+    font-size: 32px;
+  }
+  .font-30 {
+    font-size: 30px;
+  }
+  .font-28 {
+    font-size: 1.7rem;
+  }
+  .font-24 {
+    font-size: 25px;
+  }
+  .font-20 {
+    font-size: 20px;
+  }
+  .font-18 {
+    font-size: 1.7rem;
+  }
+  .font-16 {
+    font-size: 16px;
+  }
+  .font-14 {
+    font-size: 1.1rem !important;
+  }
+  .selectType input {
+    font-size: 28px;
+  }
+  /*宽度*/
+  .w-light-tag {
+    width: 48px;
+    height: 48px;
+  }
+  .w-progress-img {
+    width: 330px;
+    height: 130px;
+  }
+  .w-250 {
+    width: 250px;
+    height: 250px;
+  }
+  .w-80 {
+    width: 80px;
+    height: 80px;
+  }
+  .w-40 {
+    width: 40px;
+    height: 40px;
+  }
+  .w-down {
+    width: 15px;
+    height: 15px;
+  }
+  .w-progress-border {
+    width: 4rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+  .w-dark-type {
+    width: 238px;
+    height: 152px;
+  }
+  /*边距*/
+  .mt-110 {
+    margin-top: 110px;
+  }
+  .mt-40 {
+    margin-top: 25px;
+  }
+  .mt-20 {
+    margin-top: 20px;
+  }
+  .mt-10 {
+    margin-top: 10px;
+  }
+  /*负边距*/
+  .mt-110-table {
+    margin-top: -60px;
+  }
+  .mt-110-upper {
+    margin-top: -100px;
+  }
+  .bor-rad-20 {
+    border-radius: 20px;
+  }
+  .w-24 {
+    width: 24px;
+    height: 24px;
+  }
+  .pd-20 {
+    padding: 20px;
+  }
+  .form-input {
+    height: 70px;
+    padding: 15px;
+    width: 70%;
+  }
+  .httpSelect {
+    width: 27.5% !important;
+  }
+  .form-blue-btn,
+  .form-yellow-btn {
+    padding: 13px 40px;
+    border-radius: 40px;
+  }
+  .w-120 {
+    width: 120px;
+    height: 120px;
+  }
+  .w-loading {
+    width: 58px;
+    height: auto;
+    margin: 0 21px;
+  }
+  .bottom-30 {
+    bottom: -35px;
+  }
+  .w-type {
+    width: 260px;
+    height: 130px;
+  }
+  .w-50 {
+    width: 50px;
+    height: 50px;
+  }
+  .w-status-img {
+    width: 184px;
+    height: auto;
+  }
+  .w-status-dark {
+    width: 200px;
+    height: auto;
+  }
+  .w-status-light {
+    width: 26rem;
+    height: auto;
+  }
+  .w-scan {
+    width: 500px;
+    height: auto;
+  }
+  .w-scan-posi {
+    width: 300px;
+    height: 300px;
+  }
+  .w-user-bg {
+    width: 243px;
+  }
+  .h-40 {
+    min-height: 40px;
+  }
+  .h-52 {
+    min-height: 52px;
+  }
+  .max-table {
+    max-height: 260px;
+    height: 260px;
+    overflow: auto;
+  }
+}

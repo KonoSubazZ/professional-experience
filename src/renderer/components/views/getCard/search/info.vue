@@ -1,0 +1,141 @@
+<template>
+  <div class="people" :class="skin != 'child' ? 'position' : 'child'">
+    <div class="flex-row font-20">
+      <div class="flex-row w-number-60">
+        <div class="label">
+          <div class="mt-20">读者姓名</div>
+          <div class="mt-20">读者性别</div>
+          <div class="mt-20">读者卡号</div>
+
+          <div class="mt-20">证件类型</div>
+        </div>
+        <div class="value">
+          <div class="mt-20">{{ userInfo.name || "无" }}</div>
+          <div class="mt-20">
+            {{
+              userInfo.gender == "MALE"
+                ? "男"
+                : userInfo.gender == "FEMALE"
+                ? "女"
+                : "无"
+            }}
+          </div>
+          <div class="mt-20">{{ userInfo.number || "无" }}</div>
+
+          <div class="mt-20">{{ cardType[userInfo.certificateType] }}</div>
+        </div>
+      </div>
+      <div class="flex-row w-number-40">
+        <div class="label">
+          <div class="mt-20">联系电话</div>
+          <!-- <div class="mt-20">当前借阅</div>
+          <div class="mt-20">历史借阅</div> -->
+          <div class="mt-20">办卡时间</div>
+          <div class="mt-20">所缴押金</div>
+          <div class="mt-20">证件号码</div>
+        </div>
+        <div class="value">
+          <div class="mt-20">{{ userInfo.telephone || "无" }}</div>
+          <!-- <div class="mt-20">2本</div>
+          <div class="mt-20">12本</div> -->
+          <div class="mt-20">
+            {{ userInfo.createTime | dateTime(["h", "m"]) }}
+          </div>
+          <div class="mt-20">{{ userInfo.deposit?userInfo.deposit+'元':"未缴纳" }}</div>
+          <div class="mt-20">{{ userInfo.idNumber || "无" }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      cardType: {
+        ID_CARD: "身份证",
+        CITIZEN_CARD: "市民卡",
+        CAMPUS_CARD: "校园一卡通",
+        OTHER: "其他",
+      },
+    };
+  },
+  computed: {
+    skin() {
+      return this.$store.state.Setting.skin;
+    },
+    list() {
+      return this.$store.state.Borrow.progreeList;
+    },
+    userInfo() {
+      return this.$store.state.User.userInfo;
+    },
+    backStatus() {
+      return this.$store.state.Setting.back;
+    },
+  },
+  watch: {
+    backStatus(val) {
+      if (!val) {
+        this.reback();
+      }
+    },
+  },
+  created() {
+    this.$store.dispatch(
+      "modifyProgreeList",
+      this.$func.setNextTrue(JSON.parse(JSON.stringify(this.list)))
+    );
+    this.$store.dispatch("modifyCaption", "个人信息查询");
+  },
+  
+  methods: {
+    /**
+     * @description:返回
+     */
+    reback() {
+      this.$router.replace("/");
+    },
+  },
+};
+</script>
+
+<style lang="less" scoped>
+.child {
+  position: absolute;
+  top: 43%;
+
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.position {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.w-number-60 {
+  width: 60%;
+}
+.w-number-50 {
+  width: 50%;
+}
+.w-number-40 {
+  width: 40%;
+}
+.people {
+  width: 70%;
+  padding: 2% 10%;
+  box-sizing: border-box;
+  background: rgba(220, 239, 255, 0.23);
+  .label {
+    width: 35%;
+  }
+  .value {
+    width: 75%;
+  }
+}
+</style>
