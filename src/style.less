@@ -1,0 +1,104 @@
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+
+}
+
+#app {
+  background: url('./assets/images/bg.jpg') no-repeat;
+  background-size: cover;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  padding: 0;
+  margin: 0;
+}
+
+/* 蓝色模块 */
+.bor {
+  border: 1px solid #1a3972;
+  box-shadow: inset 1px 1px 20px #1a3972;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* 每个模块顶部的标题 */
+.top_title {
+  height: 40px;
+  display: flex;
+
+  :nth-child(1) {
+    display: flex;
+    align-items: center;
+
+    h2 {
+      color: #5dcaec;
+      font-weight: 400;
+      font-size: 22px;
+      flex: 1;
+    }
+
+    .title_img {
+      width: 28px !important;
+      margin-right: 10px;
+    }
+  }
+
+  :nth-child(2) {
+    display: flex;
+
+    p {
+      display: flex;
+      align-items: center;
+      width: 60px;
+      margin: 0 10px;
+    }
+
+    img {
+      width: 20px;
+      margin-right: 5px;
+    }
+
+    span {
+      color: #fff;
+      font-size: 14px;
+    }
+  }
+}
+
+.flex_column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex_1 {
+  flex: 1;
+}
+
+// 左右模块的宽和高
+.box_heig_334 {
+  height: 334px;
+}
+
+.c_b {
+  color: #64e2fe;
+}
+
+.c_g {
+  color: #5ba78a;
+}
+
+// 每个小模块的外层div
+#echarts {
+  width: 100%;
+  height: 100%;
+}

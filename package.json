@@ -1,0 +1,102 @@
+{
+  "name": "bigdata",
+  "private": true,
+  "version": "2.0.1",
+  "type": "commonjs",
+  "main": "./electron/main.js",
+  "author": {
+    "name": "Ljzt",
+    "email": "417214228@qq.com"
+  },
+  "homepage": "https://electron.build/configuration/configuration#Metadata-homepage",
+  "scripts": {
+    "dev": "vite && npm run start",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "start": "cross-env IS_DEV=true nodemon --exec electron . --watch ./ --ext .html",
+    "package: .exe": "npm run build && electron-builder --win --x64",
+    "package: .dep": "cross-env NODE_ENV='production' npm run build && electron-builder -l deb "
+  },
+  "build": {
+    "appId": "com.bigdata",
+    "productName": "大数据展示平台",
+    "directories": {
+      "output": "./build/bigdata"
+    },
+    "linux": {
+      "icon": "icons",
+      "category": "Education",
+      "target": "deb"
+    },
+    "win": {
+      "icon": "build/icons/icon.ico",
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./static/ico.ico",
+      "uninstallerIcon": "./static/ico.ico",
+      "installerHeaderIcon": "./static/ico.ico",
+      "include": "./static/installer.nsh"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "main.js",
+      "preload.js"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "electronDownload": {
+      "mirror": "https://npm.taobao.org/mirrors/electron/"
+    },
+    "extraResources": [
+      {
+        "from": "./extraResources/",
+        "to": "extraResources"
+      }
+    ]
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "axios": "^1.6.5",
+    "echarts": "^5.4.3",
+    "echarts-liquidfill": "^3.1.0",
+    "element-plus": "^2.4.4",
+    "less": "^4.2.0",
+    "less-loader": "^11.1.4",
+    "node-schedule": "^2.1.1",
+    "pinia": "^2.1.7",
+    "vue": "^3.3.11",
+    "vue-router": "^4.2.5",
+    "vue3-seamless-scroll": "^2.0.1",
+    "websocket": "^1.0.34"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.2",
+    "cross-env": "^7.0.3",
+    "electron": "^21.4.4",
+    "electron-builder": "^24.9.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vue-tsc": "^1.8.25"
+  }
+}
