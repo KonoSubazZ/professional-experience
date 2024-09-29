@@ -1,0 +1,103 @@
+{
+  "name": "cabinet",
+  "private": true,
+  "version": "3.0.1",
+  "main": "electron/electron.js",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "cross-env IS_DEV=true electron . && chcp 65001",
+    "packager": "electron-packager ./dist/ --platform=win32 --arch=x64 --overwrite",
+    "electron:build.linux": "yarn build && electron-builder --linux appImage",
+    "electron:build.exe": "npm run build  && chcp 65001 && electron-builder --win --ia32 "
+  },
+  "build": {
+    "appId": "com.cabinet.my-app",
+    "productName": "微图借还柜",
+    "directories": {
+      "output": "./build/cabinet"
+    },
+    "win": {
+      "icon": "build/icons/icon.ico",
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./static/ico.ico",
+      "uninstallerIcon": "./static/ico.ico",
+      "installerHeaderIcon": "./static/ico.ico",
+      "include": "./static/installer.nsh"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "electronDownload": {
+      "mirror": "https://npm.taobao.org/mirrors/electron/"
+    },
+    "extraResources": [
+      {
+        "from": "./extraResources/",
+        "to": "extraResources"
+      }
+    ]
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "auto-launch": "^5.0.5",
+    "axios": "^0.27.2",
+    "better-scroll": "^2.4.2",
+    "electron-edge-js": "^23.0.0",
+    "element-plus": "^2.2.15",
+    "face-api.js": "^0.22.2",
+    "less": "^4.0.0",
+    "less-loader": "^8.0.0",
+    "lib-flexible": "^0.3.2",
+    "postcss-px2rem": "^0.3.0",
+    "px2rem-loader": "^0.1.9",
+    "tracking": "^1.1.3",
+    "vue": "^3.2.37",
+    "vue-keyboard-virtual-next": "^1.0.1",
+    "vue-router": "4",
+    "vue3-slide-verify": "^1.1.3",
+    "vue3-video-play": "^1.3.1-beta.6",
+    "vuex": "^4.0.2",
+    "vuex-electron": "^1.0.3",
+    "vuex-persistedstate": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.0.3",
+    "concurrently": "^7.3.0",
+    "cross-env": "^7.0.3",
+    "electron": "23.3.13",
+    "electron-builder": "^23.3.3",
+    "electron-packager": "^16.0.0",
+    "vite": "^3.0.7",
+    "vue-wxlogin": "^1.0.4",
+    "wait-on": "^6.0.1"
+  }
+}
