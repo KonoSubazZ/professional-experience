@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+:root {
+    --base-height: 2vh;
+}
+
+
+@media (min-height: 1920px) {
+    :root {
+        --base-height: 2vh;
+    }
+}
+
+@media (min-height: 3840px) {
+    :root {
+        --base-height: 2vh;
+    }
+}
+
+@media (min-height: 5760px) {
+    :root {
+        --base-height: 4vh;
+    }
+}

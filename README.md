@@ -1,2 +1,3 @@
 # professional-experience
-记录各个生涯阶段的工作经验,项目经历
+
+-介绍: 瀑布流阅读 -技术栈: vue + electron -评价: 狗屎\*2
